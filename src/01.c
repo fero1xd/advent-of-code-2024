@@ -37,13 +37,24 @@ int main() {
   qsort(right, sizeof(right) / sizeof(right[0]), sizeof(int), comp);
 
   int total_distance = 0;
+  int sim_score = 0;
 
   for (int i = 0; i < count; i++) {
     total_distance += abs(left[i] - right[i]);
+
+    int curr = left[i];
+    int freq = 0;
+    for (int j = 0; j < count; j++) {
+      if (right[j] == curr) {
+        freq++;
+      }
+    }
+
+    sim_score += (curr * freq);
   }
 
   printf("total distance: %d\n", total_distance);
-  printf("Count: %d\n", count);
+  printf("similarity score: %d\n", sim_score);
 
   free(contents);
   return 0;
