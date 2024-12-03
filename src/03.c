@@ -6,6 +6,8 @@
 
 int get_x(char *p, char ch);
 
+bool is_enabled(char *contents, char *p);
+
 int main() {
 
   char *contents = read_file("./input.txt");
@@ -38,7 +40,11 @@ int main() {
         continue;
       }
 
-      total += (x * y);
+      bool enabled = is_enabled(contents, p);
+
+      if (enabled) {
+        total += (x * y);
+      }
       p = strstr(p + 3, prefix);
     } else {
       p = strstr(p + 3, prefix);
@@ -64,4 +70,47 @@ int get_x(char *p, char ch) {
   }
 
   return -1;
+}
+
+bool is_enabled(char *contents, char *p) {
+  const char *enabled_prefix = "do()";
+  const char *disabled_prefix = "don't()";
+
+  char cp = p[0];
+
+  p[0] = '\0';
+
+  char *e = strstr(contents, enabled_prefix);
+  while (e != NULL) {
+    char *current_idx = strstr(e + 1, enabled_prefix);
+    if (current_idx == NULL) {
+      break;
+    }
+    e = current_idx;
+  }
+
+  char *d = strstr(contents, disabled_prefix);
+  while (d != NULL) {
+    char *current_idx = strstr(d + 1, disabled_prefix);
+    if (current_idx == NULL) {
+      break;
+    }
+    d = current_idx;
+  }
+
+  p[0] = cp;
+
+  if (e == NULL && d == NULL) {
+    return true;
+  }
+
+  if (e == NULL) {
+    return false;
+  }
+
+  if (d == NULL) {
+    return true;
+  }
+
+  return e > d;
 }
