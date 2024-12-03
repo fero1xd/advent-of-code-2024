@@ -1,6 +1,6 @@
 CC = clang
 OUTDIR = bin
-SOURCE = src/$(day).c src/io.c
+SOURCE = src/$(day)/$(day).c src/io.c
 
 build:
 	$(CC) $(SOURCE) -o $(OUTDIR)/$(day)

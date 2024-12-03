@@ -1,4 +1,4 @@
-#include "io.h"
+#include "../io.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,7 +11,7 @@ int comp(const void *a, const void *b) {
 }
 
 int main() {
-  char *contents = read_file("./input.txt");
+  char *contents = read_file("./src/01/input.txt");
 
   char *token = strtok(contents, "\n");
 

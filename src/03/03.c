@@ -1,4 +1,4 @@
-#include "io.h"
+#include "../io.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,7 +10,7 @@ bool is_enabled(char *contents, char *p);
 
 int main() {
 
-  char *contents = read_file("./input.txt");
+  char *contents = read_file("./src/03/input.txt");
   const char *prefix = "mul(";
 
   char *p = strstr(contents, prefix);

@@ -1,4 +1,4 @@
-#include "io.h"
+#include "../io.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,7 +8,7 @@ bool is_safe_report(char *starting, int ignore_idx);
 int get_num_levels(char *report);
 
 int main() {
-  char *contents = read_file("./input.txt");
+  char *contents = read_file("./src/02/input.txt");
 
   char *token = strtok(contents, "\n");
 
