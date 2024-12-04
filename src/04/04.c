@@ -4,7 +4,7 @@
 #include <string.h>
 
 int main() {
-  char *contents = read_file("./src/04/input.txt");
+  char *contents = read_file("./src/04/sample.txt");
 
   // TMp
   int width = 139;
@@ -26,9 +26,6 @@ int main() {
         } else if (strncmp(&line[i], "SAMX", 4) == 0) {
           count++;
         }
-        //        char *p = strstr(&line[i], "XMAS");
-        // if (p == &line[i]) {
-        // }
       }
 
       int space_b = height - row;

@@ -1,6 +1,12 @@
 CC = clang
 OUTDIR = bin
-SOURCE = src/$(day)/$(day).c src/io.c
+
+FNAME = $(filename)
+ifeq ($(filename),)
+FNAME := $(day)
+endif
+
+SOURCE = src/$(day)/$(FNAME).c src/io.c
 
 build:
 	$(CC) $(SOURCE) -o $(OUTDIR)/$(day)
